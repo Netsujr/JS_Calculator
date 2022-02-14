@@ -4,6 +4,7 @@ class Calculator {
     this.currentOperandTextElement = currentOperandTextElement;
     // this.currentOperand = "";
     // this.previousOperand = "";
+    this.clear();
   }
 
   clear() {
@@ -20,8 +21,8 @@ class Calculator {
 
 
   appendNumber(number) {
-    if (number === '.' && this.currentOperand.includes('.')) return;
-    this.currentOperand = this.currentOperand.toString() + number.toString();
+    if (number === '.' && this.currentOperand.includes('.')) return
+    this.currentOperand = this.currentOperand.toString() + number.toString()
   }
 
   chooseOperation(operation) {
@@ -57,11 +58,20 @@ class Calculator {
   }
 
   getDisplayNumber(number) {
-    const stringNumber = number.toString();
-    const integerDigits = parseFloat(stringNumber.split('.')[0]);
-    const decimalDigits = stringNumber.split('.')[1];
-    let integerDisplay;
-
+    const stringNumber = number.toString()
+    const integerDigits = parseFloat(stringNumber.split('.')[0])
+    const decimalDigits = stringNumber.split('.')[1]
+    let integerDisplay
+    if (isNaN(integerDigits)) {
+      integerDisplay = ''
+    } else {
+      integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 })
+    }
+    if (decimalDigits != null) {
+      return `${integerDisplay}.${decimalDigits}`
+    } else {
+      return integerDisplay
+    }
   }
 
   //create an display method to display the result
@@ -93,23 +103,18 @@ numberButtons.forEach(button => {
     calculator.appendNumber(button.innerText);
     calculator.updateDisplay();
   });
-}
-);
-
+});
 
 operationButtons.forEach(button => {
   button.addEventListener('click', () => {
     calculator.appendNumber(button.innerText);
     calculator.updateDisplay();
-    calculator.chooseOperation(button.innerText);
   });
-}
-);
+});
 
 equalsButton.addEventListener('click', button => {
   calculator.getResult();
   calculator.updateDisplay();
-  calculator.chooseOperation(button.innerText);
 });
 
 clearButton.addEventListener('click', button => {
