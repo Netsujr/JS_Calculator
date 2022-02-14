@@ -2,8 +2,8 @@ class Calculator {
   constructor(previousOperandTextElement, currentOperandTextElement) {
     this.previousOperandTextElement = previousOperandTextElement;
     this.currentOperandTextElement = currentOperandTextElement;
-    this.currentOperand = "";
-    this.previousOperand = "";
+    // this.currentOperand = "";
+    // this.previousOperand = "";
   }
 
   clear() {
@@ -21,10 +21,7 @@ class Calculator {
 
   appendNumber(number) {
     if (number === '.' && this.currentOperand.includes('.')) return;
-    console.log(number);
-    console.log(this.currentOperand);
     this.currentOperand = this.currentOperand.toString() + number.toString();
-    console.log(this.currentOperand);
   }
 
   chooseOperation(operation) {
