@@ -43,12 +43,16 @@ class Calculator {
     switch (this.operation) {
       case '+':
         result = prev + current;
+        break
       case '-':
         result = prev - current;
+        break
       case '*':
         result = prev * current;
+        break
       case '/':
         result = prev / current;
+        break
       default:
         return;
     }
@@ -107,7 +111,7 @@ numberButtons.forEach(button => {
 
 operationButtons.forEach(button => {
   button.addEventListener('click', () => {
-    calculator.appendNumber(button.innerText);
+    calculator.chooseOperation(button.innerText);
     calculator.updateDisplay();
   });
 });
