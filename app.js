@@ -47,7 +47,7 @@ class Calculator {
       case '*':
         result = prev * current;
         break;
-      case '/':
+      case '÷':
         result = prev / current;
         break;
       default:
@@ -59,7 +59,7 @@ class Calculator {
   }
 
   getDisplayNumber(number) {
-    const stringNumber = number.toString()
+    const stringNumber = number.toString();
     const integerDigits = parseFloat(stringNumber.split('.')[0]);
     const decimalDigits = stringNumber.split('.')[1];
     let integerDisplay;
@@ -69,10 +69,10 @@ class Calculator {
       integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 });
     }
     if (decimalDigits != null) {
-      return `${integerDisplay}.${decimalDigits}`
+      return `${integerDisplay}.${decimalDigits}`;
     } else {
-      return integerDisplay
-    }
+      return integerDisplay;
+    };
   }
 
   //create an display method to display the result
