@@ -2,8 +2,6 @@ class Calculator {
   constructor(previousOperandTextElement, currentOperandTextElement) {
     this.previousOperandTextElement = previousOperandTextElement;
     this.currentOperandTextElement = currentOperandTextElement;
-    // this.currentOperand = "";
-    // this.previousOperand = "";
     this.clear();
   }
 
@@ -11,7 +9,6 @@ class Calculator {
     this.currentOperand = '';
     this.previousOperand = '';
     this.operation = undefined;
-    console.log("it works");
   }
 
 
@@ -22,7 +19,7 @@ class Calculator {
 
   appendNumber(number) {
     if (number === '.' && this.currentOperand.includes('.')) return
-    this.currentOperand = this.currentOperand.toString() + number.toString()
+    this.currentOperand = this.currentOperand.toString() + number.toString();
   }
 
   chooseOperation(operation) {
@@ -43,16 +40,16 @@ class Calculator {
     switch (this.operation) {
       case '+':
         result = prev + current;
-        break
+        break;
       case '-':
         result = prev - current;
-        break
+        break;
       case '*':
         result = prev * current;
-        break
+        break;
       case '/':
         result = prev / current;
-        break
+        break;
       default:
         return;
     }
@@ -63,13 +60,13 @@ class Calculator {
 
   getDisplayNumber(number) {
     const stringNumber = number.toString()
-    const integerDigits = parseFloat(stringNumber.split('.')[0])
-    const decimalDigits = stringNumber.split('.')[1]
-    let integerDisplay
+    const integerDigits = parseFloat(stringNumber.split('.')[0]);
+    const decimalDigits = stringNumber.split('.')[1];
+    let integerDisplay;
     if (isNaN(integerDigits)) {
-      integerDisplay = ''
+      integerDisplay = '';
     } else {
-      integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 })
+      integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits: 0 });
     }
     if (decimalDigits != null) {
       return `${integerDisplay}.${decimalDigits}`
